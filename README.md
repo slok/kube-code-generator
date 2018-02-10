@@ -1,4 +1,4 @@
-Kube code generator
+Kube code generator [![Docker Build Status](https://img.shields.io/docker/build/slok/kube-code-generator.svg)]() [![Docker Automated build](https://img.shields.io/docker/automated/slok/kube-code-generator.svg)]()
 ===================
 
 A kubernetes code generator ready container to create your CRDs.
