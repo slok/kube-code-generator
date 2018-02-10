@@ -21,7 +21,8 @@ RUN addgroup --gid $gid codegen && \
     adduser --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password --uid $uid --ingroup codegen codegen && \
     chown codegen:codegen -R /go
 
-COPY --chown=codegen:codegen hack /hack
+COPY hack /hack
+RUN chown codegen:codegen -R /hack
 
 
 USER codegen
