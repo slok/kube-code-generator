@@ -9,9 +9,9 @@ This uses the [official util](https://github.com/kubernetes/code-generator) crea
 
 * `PROJECT_PACKAGE`: The project package path.
 * `CLIENT_GENERATOR_OUT`: The client generated out path.
-* `APIS_ROOT`: The path where are our API/resources.
-* `GROUPS_VERSION`: The groups or the resources.
-* `GENERATION_TARGETS`: The wanted generated code. [(deepcopy,defaulter,client,lister,informer) or "all".]
+* `APIS_ROOT`: The path where our API/resources are.
+* `GROUPS_VERSION`: The groups of the resources.
+* `GENERATION_TARGETS`: The wanted generated code. [(deepcopy,defaulter,client,lister,informer) or "all"].
 
 ## Usage
 
