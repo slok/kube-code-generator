@@ -3,6 +3,8 @@ Kube code generator [![Docker Build Status](https://img.shields.io/docker/build/
 
 A kubernetes code generator ready container to create your CRDs.
 
+This uses the [official util](https://github.com/kubernetes/code-generator) created by Kubernetes to autogenerate the code required by Kubernetes resources.
+
 ## Env vars required
 
 * `PROJECT_PACKAGE`: The project package path.
