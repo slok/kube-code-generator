@@ -1,4 +1,4 @@
-# Kube code generator [![Docker Build Status](https://img.shields.io/docker/build/slok/kube-code-generator.svg)](https://hub.docker.com/r/slok/kube-code-generator) [![Docker Automated build](https://img.shields.io/docker/automated/slok/kube-code-generator.svg)](https://hub.docker.com/r/slok/kube-code-generator)
+# Kube code generator [![Docker Repository on Quay](https://quay.io/repository/slok/kube-code-generator/status "Docker Repository on Quay")](https://quay.io/repository/slok/kube-code-generator)
 
 A kubernetes code generator ready container to create your CRDs.
 
@@ -26,7 +26,7 @@ docker run -it --rm \
 	-e APIS_ROOT=${PROJECT_PACKAGE}/apis \
 	-e GROUPS_VERSION="test:v1alpha1 test2:v1" \
 	-e GENERATION_TARGETS="deepcopy,client" \
-    slok/kube-code-generator:latest
+    quay.io/slok/kube-code-generator
 ```
 
 ## Example
