@@ -44,7 +44,7 @@ if [[ -z GROUPS_VERSION ]]; then
   exit 1
 fi
 
-GENERATION_TARGETS="${GENERATION_TARGETS}:-all"
+GENERATION_TARGETS="${GENERATION_TARGETS:-all}"
 
 # Ugly but needs to be relative if we want to use k8s.io/code-generator
 # as it is without touching/sed-ing the code/scripts

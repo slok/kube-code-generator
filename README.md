@@ -1,5 +1,4 @@
-Kube code generator [![Docker Build Status](https://img.shields.io/docker/build/slok/kube-code-generator.svg)](https://hub.docker.com/r/slok/kube-code-generator) [![Docker Automated build](https://img.shields.io/docker/automated/slok/kube-code-generator.svg)](https://hub.docker.com/r/slok/kube-code-generator)
-===================
+# Kube code generator [![Docker Build Status](https://img.shields.io/docker/build/slok/kube-code-generator.svg)](https://hub.docker.com/r/slok/kube-code-generator) [![Docker Automated build](https://img.shields.io/docker/automated/slok/kube-code-generator.svg)](https://hub.docker.com/r/slok/kube-code-generator)
 
 A kubernetes code generator ready container to create your CRDs.
 
@@ -19,7 +18,7 @@ Having a project that would be on `github.com/someone/myproject`, wants to gener
 
 
 ```bash
-PROJECT_PACKAGE=/go/src/github.com/someone/myproject && \
+PROJECT_PACKAGE=github.com/someone/myproject && \
 docker run -it --rm \
 	-v ${PWD}:/go/src/${PROJECT_PACKAGE}\
 	-e PROJECT_PACKAGE=${PROJECT_PACKAGE} \
