@@ -6,6 +6,7 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
+// +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // MyCRD is a test crd.
