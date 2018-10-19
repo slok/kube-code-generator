@@ -10,10 +10,17 @@ RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGE
     mkdir -p /go/src/k8s.io/code-generator/ && \
     tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /go/src/k8s.io/code-generator/ && \
     rm kubernetes-${CODEGEN_VERSION}.tar.gz && \
+    \
     wget http://github.com/kubernetes/apimachinery/archive/kubernetes-${CODEGEN_VERSION}.tar.gz && \
     mkdir -p /go/src/k8s.io/apimachinery/ && \
     tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /go/src/k8s.io/apimachinery/ && \
     rm kubernetes-${CODEGEN_VERSION}.tar.gz && \
+    \
+    wget http://github.com/kubernetes/api/archive/kubernetes-${CODEGEN_VERSION}.tar.gz && \
+    mkdir -p /go/src/k8s.io/api/ && \
+    tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /go/src/k8s.io/api/ && \
+    rm kubernetes-${CODEGEN_VERSION}.tar.gz && \
+    \
     go install /go/src/k8s.io/code-generator/cmd/openapi-gen
 
 
