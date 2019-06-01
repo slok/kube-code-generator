@@ -1,9 +1,9 @@
 [[constraint]]
-  version = "kubernetes-1.13.5"
+  version = "kubernetes-1.14.2"
   name = "k8s.io/apiextensions-apiserver"
 
 [[constraint]]
-  version = "kubernetes-1.13.5"
+  version = "kubernetes-1.14.2"
   name = "k8s.io/apimachinery"
 
 [prune]
