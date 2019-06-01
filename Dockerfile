@@ -1,5 +1,5 @@
-FROM golang:1.11
-ARG CODEGEN_VERSION="1.12.4"
+FROM golang:1.12
+ARG CODEGEN_VERSION="1.13.5"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -21,7 +21,7 @@ RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGE
     tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /go/src/k8s.io/api/ && \
     rm kubernetes-${CODEGEN_VERSION}.tar.gz && \
     \
-    go install /go/src/k8s.io/code-generator/cmd/openapi-gen
+    go get k8s.io/kube-openapi/cmd/openapi-gen
 
 
 # Create user
