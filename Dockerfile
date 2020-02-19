@@ -1,5 +1,5 @@
-FROM golang:1.12
-ARG CODEGEN_VERSION="1.14.2"
+FROM golang:1.13
+ARG CODEGEN_VERSION="1.15.10"
 
 RUN apt-get update && \
     apt-get install -y \

@@ -11,15 +11,8 @@ set -o pipefail
 ## Openapi output path.
 #OPENAPI_OUTPUT_PACKAGE=github.com/someone/mypackage/openapi
 
-if [[ -z CRD_PACKAGES ]]; then
-  echo "CRD_PACKAGES env var is required"
-  exit 1
-fi
-
-if [[ -z OPENAPI_OUTPUT_PACKAGE ]]; then
-  echo "OPENAPI_OUTPUT_PATH env var is required"
-  exit 1
-fi
+[ -z "$CRD_PACKAGES" ] && echo "CRD_PACKAGES env var is required" && exit 1;
+[ -z "$OPENAPI_OUTPUT_PACKAGE" ] && echo "OPENAPI_OUTPUT_PATH env var is required" && exit 1;
 
 openapi-gen \
   -i ${CRD_PACKAGES} \
