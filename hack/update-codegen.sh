@@ -24,25 +24,11 @@ set -o pipefail
 #GENERATION_TARGETS="deepcopy,client"
 
 
-if [[ -z PROJECT_PACKAGE ]]; then
-  echo "PROJECT_PACKAGE env var is required"
-  exit 1
-fi
+[ -z "$PROJECT_PACKAGE" ] && echo "PROJECT_PACKAGE env var is required" && exit 1;
+[ -z "$CLIENT_GENERATOR_OUT" ] && echo "CLIENT_GENERATOR_OUT env var is required" && exit 1;
+[ -z "$APIS_ROOT" ] && echo "APIS_ROOT env var is required" && exit 1;
+[ -z "$GROUPS_VERSION" ] && echo "GROUPS_VERSION env var is required" && exit 1;
 
-if [[ -z CLIENT_GENERATOR_OUT ]]; then
-  echo "CLIENT_GENERATOR_OUT env var is required"
-  exit 1
-fi
-
-if [[ -z APIS_ROOT ]]; then
-  echo "APIS_ROOT env var is required"
-  exit 1
-fi
-
-if [[ -z GROUPS_VERSION ]]; then
-  echo "GROUPS_VERSION env var is required"
-  exit 1
-fi
 
 GENERATION_TARGETS="${GENERATION_TARGETS:-all}"
 
