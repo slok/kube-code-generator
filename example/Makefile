@@ -2,10 +2,11 @@ IMAGE := slok/kube-code-generator:latest
 
 DIRECTORY := $(PWD)
 PROJECT_PACKAGE := github.com/slok/kube-code-generator/example
-K8S_VERSION := "1.16.7"
+K8S_VERSION := "1.17.3"
 DEPS_CMD := GO111MODULE=on go mod edit \
 	-require=k8s.io/apimachinery@kubernetes-${K8S_VERSION} \
 	-require=k8s.io/apiextensions-apiserver@kubernetes-${K8S_VERSION} \
+	-require=k8s.io/client-go@kubernetes-${K8S_VERSION} \
 	&& go mod tidy
 
 default: generate
