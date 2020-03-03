@@ -56,7 +56,7 @@ type HeroSpec struct {
 }
 
 type HeroStatus struct {
-	Movin       bool   `json:"moving"`
+	Moving      bool   `json:"moving"`
 	CurrentCity string `json:"currentCity"`
 }
 

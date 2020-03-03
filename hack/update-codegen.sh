@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-+set -eufo pipefail
+set -eufo pipefail
 
 
 ## Project specific data
@@ -21,6 +21,11 @@
 ## Example: 
 #GENERATION_TARGETS="deepcopy,client"
 
+
+PROJECT_PACKAGE="${PROJECT_PACKAGE:-""}"
+CLIENT_GENERATOR_OUT="${CLIENT_GENERATOR_OUT:-""}"
+APIS_ROOT="${APIS_ROOT:-""}"
+GROUPS_VERSION="${GROUPS_VERSION:-""}"
 
 [ -z "$PROJECT_PACKAGE" ] && echo "PROJECT_PACKAGE env var is required" && exit 1;
 [ -z "$CLIENT_GENERATOR_OUT" ] && echo "CLIENT_GENERATOR_OUT env var is required" && exit 1;
