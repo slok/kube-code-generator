@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o nounset
-set -o pipefail
+set -eufo pipefail
 
 
 ## CRD paths.
@@ -10,6 +8,9 @@ set -o pipefail
 
 ## Openapi output path.
 #OPENAPI_OUTPUT_PACKAGE=github.com/someone/mypackage/openapi
+
+CRD_PACKAGES="${CRD_PACKAGES:-""}"
+OPENAPI_OUTPUT_PACKAGE="${OPENAPI_OUTPUT_PACKAGE:-""}"
 
 [ -z "$CRD_PACKAGES" ] && echo "CRD_PACKAGES env var is required" && exit 1;
 [ -z "$OPENAPI_OUTPUT_PACKAGE" ] && echo "OPENAPI_OUTPUT_PATH env var is required" && exit 1;

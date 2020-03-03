@@ -1,28 +1,19 @@
-package v1alpha1
+package v1
 
 import (
-	apiextensionsv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	kubecodegeneratortest "github.com/slok/kube-code-generator/example/apis/test"
+	kubecodegeneratorcomic "github.com/slok/kube-code-generator/example/apis/comic"
 )
 
 const (
-	version = "v1alpha1"
-)
-
-// Workspace constants
-const (
-	WorkspaceKind       = "Workspace"
-	WorkspaceName       = "workspace"
-	WorkspaceNamePlural = "workspaces"
-	WorkspaceScope      = apiextensionsv1beta1.ClusterScoped
+	version = "v1"
 )
 
 // SchemeGroupVersion is group version used to register these objects
-var SchemeGroupVersion = schema.GroupVersion{Group: kubecodegeneratortest.GroupName, Version: version}
+var SchemeGroupVersion = schema.GroupVersion{Group: kubecodegeneratorcomic.GroupName, Version: version}
 
 // Kind takes an unqualified kind and returns back a Group qualified GroupKind
 func Kind(kind string) schema.GroupKind {
@@ -40,15 +31,17 @@ func Resource(resource string) schema.GroupResource {
 }
 
 var (
+	// SchemeBuilder initializes a scheme builder
 	SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
-	AddToScheme   = SchemeBuilder.AddToScheme
+	// AddToScheme is a global function that registers this API group & version to a scheme
+	AddToScheme = SchemeBuilder.AddToScheme
 )
 
 // Adds the list of known types to Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-		&MyCRD{},
-		&MyCRDList{},
+		&Hero{},
+		&HeroList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

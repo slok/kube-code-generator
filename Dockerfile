@@ -1,5 +1,6 @@
-FROM golang:1.13
+FROM golang:1.14
 ARG CODEGEN_VERSION="1.17.3"
+ARG CONTROLLER_GEN_VERSION="0.2.5"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -21,8 +22,11 @@ RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGE
     tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /go/src/k8s.io/api/ && \
     rm kubernetes-${CODEGEN_VERSION}.tar.gz && \
     \
+    wget https://github.com/openshift/kubernetes-sigs-controller-tools/releases/download/v${CONTROLLER_GEN_VERSION}/controller-gen-linux-amd64 && \
+    mv controller-gen-linux-amd64 /usr/bin/controller-gen && \
+    chmod a+x /usr/bin/controller-gen && \
+    \
     go get k8s.io/kube-openapi/cmd/openapi-gen
-
 
 # Create user
 ARG uid=1000
@@ -32,10 +36,11 @@ RUN addgroup --gid $gid codegen && \
     chown codegen:codegen -R /go
 
 COPY hack /hack
-RUN chown codegen:codegen -R /hack
-
+RUN chown codegen:codegen -R /hack && \
+    mv /hack/* /usr/bin
 
 USER codegen
 
-WORKDIR /hack
-CMD ["./update-codegen.sh"]
+WORKDIR /usr/bin
+
+CMD ["update-codegen.sh"]
