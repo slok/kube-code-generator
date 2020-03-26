@@ -24,6 +24,8 @@ This uses the [official util](https://github.com/kubernetes/code-generator) crea
 | Kubernetes v1.16  | `docker pull quay.io/slok/kube-code-generator:v1.16.7`   |
 | Kubernetes v1.17  | `docker pull quay.io/slok/kube-code-generator:v1.17.3`   |
 
+You can use `docker pull quay.io/slok/kube-code-generator:latest` for `master` branch.
+
 ## Getting started
 
 The best way to start is by checking an [example](example/) of how
