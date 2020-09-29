@@ -12,18 +12,19 @@ This uses the [official util](https://github.com/kubernetes/code-generator) crea
 
 ## Docker image versions
 
-|                   | Docker image                                             |
-| ----------------- | -------------------------------------------------------- |
-| Kubernetes v1.18  | `docker pull quay.io/slok/kube-code-generator:v1.18.0`   |
-| Kubernetes v1.17  | `docker pull quay.io/slok/kube-code-generator:v1.17.3`   |
-| Kubernetes v1.16  | `docker pull quay.io/slok/kube-code-generator:v1.16.7`   |
-| Kubernetes v1.15  | `docker pull quay.io/slok/kube-code-generator:v1.15.10`  |
-| Kubernetes v1.14  | `docker pull quay.io/slok/kube-code-generator:v1.14.2`   |
-| Kubernetes v1.13  | `docker pull quay.io/slok/kube-code-generator:v1.13.5`   |
-| Kubernetes v1.12  | `docker pull quay.io/slok/kube-code-generator:v1.12.4`   |
-| Kubernetes v1.11  | `docker pull quay.io/slok/kube-code-generator:v1.11.3`   |
-| Kubernetes v1.10  | `docker pull quay.io/slok/kube-code-generator:v1.10.0`   |
-| Kubernetes v1.9   | `docker pull quay.io/slok/kube-code-generator:v1.9.1`    |
+|                  | Docker image                                            |
+| ---------------- | ------------------------------------------------------- |
+| Kubernetes v1.19 | `docker pull quay.io/slok/kube-code-generator:v1.19.2`  |
+| Kubernetes v1.18 | `docker pull quay.io/slok/kube-code-generator:v1.18.0`  |
+| Kubernetes v1.17 | `docker pull quay.io/slok/kube-code-generator:v1.17.3`  |
+| Kubernetes v1.16 | `docker pull quay.io/slok/kube-code-generator:v1.16.7`  |
+| Kubernetes v1.15 | `docker pull quay.io/slok/kube-code-generator:v1.15.10` |
+| Kubernetes v1.14 | `docker pull quay.io/slok/kube-code-generator:v1.14.2`  |
+| Kubernetes v1.13 | `docker pull quay.io/slok/kube-code-generator:v1.13.5`  |
+| Kubernetes v1.12 | `docker pull quay.io/slok/kube-code-generator:v1.12.4`  |
+| Kubernetes v1.11 | `docker pull quay.io/slok/kube-code-generator:v1.11.3`  |
+| Kubernetes v1.10 | `docker pull quay.io/slok/kube-code-generator:v1.10.0`  |
+| Kubernetes v1.9  | `docker pull quay.io/slok/kube-code-generator:v1.9.1`   |
 
 You can use `docker pull quay.io/slok/kube-code-generator:latest` for `master` branch.
 
