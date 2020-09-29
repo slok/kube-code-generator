@@ -29,6 +29,7 @@ RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGE
     cd ./controller-tools-${CONTROLLER_GEN_VERSION}/ && \
     go build -o controller-gen  ./cmd/controller-gen/ && \
     mv ./controller-gen /usr/bin/ && \
+    rm -rf ../v${CONTROLLER_GEN_VERSION}.tar.gz && \
     rm -rf ../controller-tools-${CONTROLLER_GEN_VERSION}
 
 
