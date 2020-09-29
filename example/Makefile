@@ -2,7 +2,6 @@ IMAGE := slok/kube-code-generator:latest
 
 DIRECTORY := $(PWD)
 PROJECT_PACKAGE := "github.com/slok/kube-code-generator/example"
-K8S_VERSION := "1.18.0"
 DEPS_CMD := go mod tidy
 
 default: generate
