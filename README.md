@@ -14,6 +14,7 @@ This uses the [official util](https://github.com/kubernetes/code-generator) crea
 
 |                  | Docker image                                            |
 | ---------------- | ------------------------------------------------------- |
+| Kubernetes v1.20 | `docker pull quay.io/slok/kube-code-generator:v1.20.1`  |
 | Kubernetes v1.19 | `docker pull quay.io/slok/kube-code-generator:v1.19.2`  |
 | Kubernetes v1.18 | `docker pull quay.io/slok/kube-code-generator:v1.18.0`  |
 | Kubernetes v1.17 | `docker pull quay.io/slok/kube-code-generator:v1.17.3`  |
