@@ -40,3 +40,11 @@ generate-crd:
 .PHONY: deps
 deps:
 	$(DEPS_CMD)
+
+.PHONY: clean
+clean:
+	echo "Cleaning generated files..."
+	rm -rf ./manifests
+	rm -rf ./client
+	rm -rf ./apis/comic/v1/zz_generated.deepcopy.go
+	rm -rf ./apis/comic/v1/openapi_generated.go
