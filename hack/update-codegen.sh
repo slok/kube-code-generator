@@ -33,7 +33,12 @@ GROUPS_VERSION="${GROUPS_VERSION:-""}"
 [ -z "$GROUPS_VERSION" ] && echo "GROUPS_VERSION env var is required" && exit 1;
 
 
+# Check:
+# - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-api-machinery/generating-clientset.md
 GENERATION_TARGETS="${GENERATION_TARGETS:-all}"
+
+# From >=1.16 we use gomod, so we need to execute from the project directory.
+cd "${GOPATH}/src/${PROJECT_PACKAGE}"
 
 # Ugly but needs to be relative if we want to use k8s.io/code-generator
 # as it is without touching/sed-ing the code/scripts

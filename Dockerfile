@@ -1,6 +1,6 @@
-FROM golang:1.15
-ARG CODEGEN_VERSION="1.20.1"
-ARG CONTROLLER_GEN_VERSION="0.4.1"
+FROM golang:1.16
+ARG CODEGEN_VERSION="1.21.0"
+ARG CONTROLLER_GEN_VERSION="0.5.0"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -21,8 +21,6 @@ RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGE
     mkdir -p /go/src/k8s.io/api/ && \
     tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /go/src/k8s.io/api/ && \
     rm kubernetes-${CODEGEN_VERSION}.tar.gz && \
-    \
-    go get k8s.io/kube-openapi/cmd/openapi-gen && \
     \
     wget https://github.com/kubernetes-sigs/controller-tools/archive/v${CONTROLLER_GEN_VERSION}.tar.gz && \
     tar xvf ./v${CONTROLLER_GEN_VERSION}.tar.gz && \
