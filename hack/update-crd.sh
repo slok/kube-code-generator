@@ -5,6 +5,7 @@ set -eufo pipefail
 GO_PROJECT_ROOT="${GO_PROJECT_ROOT:-""}"
 CRD_TYPES_PATH="${CRD_TYPES_PATH:-""}"
 CRD_OUT_PATH="${CRD_OUT_PATH:-""}"
+CRD_FLAG="${CRD_FLAG:-"crd:trivialVersions=true"}"
 
 
 [ -z "$GO_PROJECT_ROOT" ] && echo "GO_PROJECT_ROOT env var is required" && exit 1;
@@ -26,6 +27,6 @@ mkdir -p ${CRD_OUT_PATH}
 echo "Generating CRD manifests..."
 
 controller-gen \
-    crd:trivialVersions=true \
+    "${CRD_FLAG}" \
     paths="./${CRD_TYPES_PATH}/..." \
     output:dir="./${CRD_OUT_PATH}"
