@@ -32,3 +32,12 @@ You can use `docker pull quay.io/slok/kube-code-generator:latest` for `master` b
 ## Getting started
 
 The best way to know how to use it is by checking the [example](example/) that will generate the required clients and CRD manifests.
+
+### Optional settings
+
+Some settings are optional so you can customize special cases:
+
+- On CRD manifest YAML generation:
+  - `CRD_FLAG` env var to overwrite CRD flag with a custom one. (E.g: Use `allowDangerousTypes=true` to allow `float64` on generation, [more info here][unsecure-float64])
+
+[unsecure-float64]: https://github.com/kubernetes-sigs/controller-tools/issues/245
