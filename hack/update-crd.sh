@@ -5,13 +5,11 @@ set -eufo pipefail
 GO_PROJECT_ROOT="${GO_PROJECT_ROOT:-""}"
 CRD_TYPES_PATH="${CRD_TYPES_PATH:-""}"
 CRD_OUT_PATH="${CRD_OUT_PATH:-""}"
-CRD_FLAG="${CRD_FLAG:-"crd:trivialVersions=true"}"
+CRD_FLAG="${CRD_FLAG:-"crd:crdVersions=v1"}"
 
-
-[ -z "$GO_PROJECT_ROOT" ] && echo "GO_PROJECT_ROOT env var is required" && exit 1;
-[ -z "$CRD_TYPES_PATH" ] && echo "CRD_TYPES_PATH env var is required" && exit 1;
-[ -z "$CRD_OUT_PATH" ] && echo "CRD_OUT_PATH env var is required" && exit 1;
-
+[ -z "$GO_PROJECT_ROOT" ] && echo "GO_PROJECT_ROOT env var is required" && exit 1
+[ -z "$CRD_TYPES_PATH" ] && echo "CRD_TYPES_PATH env var is required" && exit 1
+[ -z "$CRD_OUT_PATH" ] && echo "CRD_OUT_PATH env var is required" && exit 1
 
 GO_PROJECT_ROOT=$(realpath ${GO_PROJECT_ROOT})
 CRD_TYPES_PATH=$(realpath ${CRD_TYPES_PATH})
