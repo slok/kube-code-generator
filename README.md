@@ -1,7 +1,7 @@
 # Kube code generator
 
 [![Docker Repository on Quay](https://quay.io/repository/slok/kube-code-generator/status "Docker Repository on Quay")](https://quay.io/repository/slok/kube-code-generator)
-![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.22-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
+![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.23-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
 
 A kubernetes code generator container that makes easier to create CRD manifests (registration API) and clients.
 
