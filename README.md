@@ -16,6 +16,7 @@ Uses [official code-generator](https://github.com/kubernetes/code-generator) cre
 
 |                  | Docker image                                            |
 | ---------------- | ------------------------------------------------------- |
+| Kubernetes v1.24 | `docker pull quay.io/slok/kube-code-generator:v1.24.0`  |
 | Kubernetes v1.23 | `docker pull quay.io/slok/kube-code-generator:v1.23.0`  |
 | Kubernetes v1.22 | `docker pull quay.io/slok/kube-code-generator:v1.22.0`  |
 | Kubernetes v1.21 | `docker pull quay.io/slok/kube-code-generator:v1.21.1`  |
