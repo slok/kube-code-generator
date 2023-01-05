@@ -1,6 +1,6 @@
 FROM golang:1.19
-ARG CODEGEN_VERSION="1.25.3"
-ARG CONTROLLER_GEN_VERSION="0.10.0"
+ARG CODEGEN_VERSION="1.26.0"
+ARG CONTROLLER_GEN_VERSION="0.11.1"
 
 RUN apt-get update && \
     apt-get install -y \
