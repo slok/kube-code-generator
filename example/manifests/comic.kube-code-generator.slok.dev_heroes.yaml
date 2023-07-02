@@ -4,7 +4,6 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: (devel)
-  creationTimestamp: null
   name: heroes.comic.kube-code-generator.slok.dev
 spec:
   group: comic.kube-code-generator.slok.dev

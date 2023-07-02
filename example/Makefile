@@ -1,4 +1,4 @@
-IMAGE := slok/kube-code-generator:latest
+IMAGE := ghcr.io/slok/kube-code-generator:v1.27.0
 
 DIRECTORY := $(PWD)
 PROJECT_PACKAGE := github.com/slok/kube-code-generator/example
