@@ -1,6 +1,6 @@
 # Kube code generator
 
-![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.<30-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
+![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.30-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
 
 ## Introduction
 

@@ -1,0 +1,77 @@
+name: Build pull request
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  pr-release-image:
+    if: ${{ github.event.issue.pull_request && github.event.comment.body == '/yolo'}}
+    name: Release images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR SHA
+        id: sha
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const pr = await github.rest.pulls.get({
+              owner: context.issue.owner,
+              repo: context.issue.repo,
+              pull_number: context.issue.number,
+            });
+            return pr.data.head.sha
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.sha.outputs.result }}
+
+      - name: React to comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.reactions.createForIssueComment({
+              owner: context.issue.owner,
+              repo: context.issue.repo,
+              comment_id: context.payload.comment.id,
+              content: "rocket",
+            });
+
+      - name: Docker auth
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and publish docker images
+        run: make build-publish-image-all
+        env:
+          PROD_IMAGE_NAME: ghcr.io/${GITHUB_REPOSITORY}
+          VERSION: ${{ steps.sha.outputs.result }}
+
+      - name: Message success
+        if: ${{ success() }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✔ Release ready: `${{ steps.sha.outputs.result }}`',
+            });
+
+      - name: Message failure
+        if: ${{ failure() }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Release failed: `${{ steps.sha.outputs.result }}`',
+            });
