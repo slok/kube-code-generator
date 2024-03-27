@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     container: golangci/golangci-lint:v1.56.2-alpine
     steps:
-      - run: echo "machine github.com login ${CW_GO_DEPS_LOGIN} password ${CW_GO_DEPS_TOKEN}" > ~/.netrc
       - uses: actions/checkout@v4
       - run: |
           # We need this go flag because it started to error after golangci-lint is using Go 1.21.
@@ -20,7 +19,6 @@ jobs:
     name: Unit test
     runs-on: ubuntu-latest
     steps:
-      - run: echo "machine github.com login ${CW_GO_DEPS_LOGIN} password ${CW_GO_DEPS_TOKEN}" > ~/.netrc
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
