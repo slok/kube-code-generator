@@ -1,4 +1,4 @@
-IMAGE := ghcr.io/slok/kube-code-generator:v1.27.0-2-g5239f0d-amd64
+IMAGE := ghcr.io/slok/kube-code-generator:latest
 
 DIRECTORY := $(PWD)
 DEPS_CMD := go mod tidy
@@ -10,7 +10,8 @@ generate: generate-client
 
 .PHONY: generate-client
 generate-client:
-	docker run -it --rm -v $(DIRECTORY):/app $(IMAGE) \
+	@docker pull $(IMAGE)
+	@docker run -it --rm -v $(DIRECTORY):/app $(IMAGE) \
 	--apis-in ./apis \
 	--go-gen-out ./client \
 	--crd-gen-out ./manifests
