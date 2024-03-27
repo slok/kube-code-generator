@@ -42,16 +42,15 @@ RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGE
     rm -rf ../controller-tools-${CONTROLLER_GEN_VERSION}
 
 
-# Create user
+# Create user and workdir.
 ARG uid=1000
 ARG gid=1000
 RUN addgroup --gid $gid app && \
     adduser --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password --uid $uid --ingroup app app && \
     chown app:app -R /go
+RUN mkdir /app && chown app:app -R /app
 
 USER app
-
-RUN mkdir /app && chown app:app -R /app
 WORKDIR /app
 
 ENV KUBE_CODE_GENERATOR_CODEGEN_PATH=/tmp/k8s-code-generator

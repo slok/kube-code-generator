@@ -57,7 +57,7 @@ func run(ctx context.Context, args []string, stdout, stderr io.Writer) error {
 		return fmt.Errorf("could not get go module: %w", err)
 	}
 	goCodeGenOutPkg := utilgomod.GetGoPackageFromDir(goModule, cmdCfg.GoCodeOutPath)
-	logger.Infof("Go generated code package inferred", "module", goCodeGenOutPkg)
+	logger.WithValues(log.Kv{"module": goCodeGenOutPkg}).Infof("Go generated code package inferred")
 
 	if filepath.IsAbs(cmdCfg.APIsPath) {
 		return fmt.Errorf("APIs path should be relative")
@@ -104,7 +104,7 @@ func generateGoCode(ctx context.Context, cmdCfg CmdConfig, logger log.Logger, ge
 		boilerplatePath = f.Name()
 	}
 
-	logger.Infof("Generating Go clients code...")
+	logger.Infof("Generating Go code...")
 	err = generate.NewClientGenerator(logger, cmdCfg.CodeGenPath, generate.StdBashExecutor).
 		WithWatch().
 		WithBoilerplate(boilerplatePath).
