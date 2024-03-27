@@ -36,7 +36,7 @@ The easiest way is to use the provided Docker image as it has all the required u
 Here is an example that mounts the current directory (a Go project) and generates the Go code and the CRDs by providing the APIs input directory and the generation output directories:
 
 ```bash
-docker run -it --rm -v ${PWD}:/app  ghcr.io/slok/kube-code-generator \
+docker run -it --rm -v ${PWD}:/app ghcr.io/slok/kube-code-generator \
  --apis-in ./apis \
  --go-gen-out ./gen \
  --crd-gen-out ./gen/manifests
@@ -46,10 +46,18 @@ However, the best way to know how to use it is with a full example, you have it 
 
 ## Kubernetes versions
 
-| Kubernetes | Docker image                                            |
-| ---------- | ------------------------------------------------------- |
-|  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v1.29.0`  |
+It's suggested that if you don't have an old Kubenretes version, you try the latest kube-code-generator
+(`latest`), however the ones described on the table here are known to work correctly on the specific version.
 
-### Versions <v1.29
+| Kubernetes | Docker image                                           |
+| ---------- | ------------------------------------------------------ |
+|  v1.30     | `docker pull ghcr.io/slok/kube-code-generator:v1.0.0`  |
+|  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v1.0.0`  |
+|  v1.28     | `docker pull ghcr.io/slok/kube-code-generator:v1.0.0`  |
+|  v1.27     | `docker pull ghcr.io/slok/kube-code-generator:v1.0.0`  |
 
-With the release of Kubernetes v1.30, this app was rewritten from bash hacky scripts into a proper Go application, that is easier, more extendable and safer to use. This new refactor of the app works with Kubernetes `>=v1.29` and changes the usage of the app, so for other versions you will need to check the previous implementation I would suggest that you check the [Readme of `<v1.27`](https://github.com/slok/kube-code-generator/tree/v1.27.0).
+### Versions <=v1.27
+
+With the release of Kubernetes v1.30, this app was rewritten from bash hacky scripts into a proper Go application, that is easier, more extendable and safer to use.
+
+In case you tested this new refactor and isn't working for you, Inwould suggest to try the previous versions, check the previous [Readme](https://github.com/slok/kube-code-generator/tree/v1.27.0).
