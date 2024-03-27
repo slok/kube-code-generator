@@ -1,0 +1,98 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: (devel)
+  name: heroes.comic.kube-code-generator.slok.dev
+spec:
+  group: comic.kube-code-generator.slok.dev
+  names:
+    categories:
+    - heroes
+    - superheroes
+    kind: Hero
+    listKind: HeroList
+    plural: heroes
+    shortNames:
+    - he
+    - sh
+    singular: hero
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .spec.name
+      name: NAME
+      type: string
+    - jsonPath: .spec.city
+      name: CITY
+      type: string
+    - jsonPath: .spec.kind
+      name: KIND
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: Hero represents a comic hero.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: HeroSpec is the spec of a Hero.
+            properties:
+              birthDate:
+                format: date-time
+                type: string
+              city:
+                type: string
+              kind:
+                default: unknown
+                description: HeroType is the type of a hero.
+                enum:
+                - unknown
+                - superhero
+                - antihero
+                - villain
+                type: string
+              name:
+                maxLength: 128
+                type: string
+              superPowers:
+                items:
+                  type: string
+                type: array
+                x-kubernetes-list-type: map
+            required:
+            - kind
+            - name
+            type: object
+          status:
+            properties:
+              currentCity:
+                type: string
+              moving:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
