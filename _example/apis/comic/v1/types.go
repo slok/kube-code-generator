@@ -41,6 +41,7 @@ type Hero struct {
 type HeroSpec struct {
 	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:MaxLength=128
+	// +kubebuilder:validation:XValidation:message="name cannot be empty",rule="self.size() != 0"
 	Name string `json:"name"`
 	// +optional
 	City string `json:"city,omitempty"`
