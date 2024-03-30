@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Docker image uses `kubernetes/code-generator` v1.30.0-rc.0.
+
 ## [v0.1.0] - 2024-03-27
 
 ### Added

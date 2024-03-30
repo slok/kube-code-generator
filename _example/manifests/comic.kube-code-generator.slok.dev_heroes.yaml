@@ -75,6 +75,9 @@ spec:
               name:
                 maxLength: 128
                 type: string
+                x-kubernetes-validations:
+                - message: name cannot be empty
+                  rule: self.size() != 0
               superPowers:
                 items:
                   type: string
