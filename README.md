@@ -51,10 +51,10 @@ It's suggested that if you don't have an old Kubenretes version, you try the lat
 
 | Kubernetes | Docker image                                           |
 | ---------- | ------------------------------------------------------ |
-|  v1.30     | `docker pull ghcr.io/slok/kube-code-generator:v0.1.0`  |
-|  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v0.1.0`  |
-|  v1.28     | `docker pull ghcr.io/slok/kube-code-generator:v0.1.0`  |
-|  v1.27     | `docker pull ghcr.io/slok/kube-code-generator:v0.1.0`  |
+|  v1.30     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
+|  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
+|  v1.28     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
+|  v1.27     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 
 ### Versions <v1.27
 
