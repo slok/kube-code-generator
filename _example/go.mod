@@ -1,6 +1,6 @@
 module github.com/slok/kube-code-generator/example
 
-go 1.22.0
+go 1.22.3
 
 require (
 	k8s.io/apimachinery v0.30.0
