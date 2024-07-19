@@ -1,6 +1,6 @@
 module github.com/slok/kube-code-generator
 
-go 1.22.0
+go 1.22.5
 
 require (
 	github.com/alecthomas/kingpin/v2 v2.4.0
@@ -14,6 +14,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
+	golang.org/x/sys v0.22.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

@@ -20,7 +20,7 @@ func TestGetGoModule(t *testing.T) {
 
 		"If there is content, but no go module, it should fail.": {
 			goDotMod: `
-go 1.22.0
+go 1.22.5
 
 require (
 	github.com/alecthomas/kingpin/v2 v2.4.0
@@ -36,7 +36,7 @@ require (
 			goDotMod: `
 module github.com/slok/kube-code-generator
 
-go 1.22.0
+go 1.22.5
 
 require (
 	github.com/alecthomas/kingpin/v2 v2.4.0
