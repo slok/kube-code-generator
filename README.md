@@ -1,6 +1,6 @@
 # Kube code generator
 
-![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.30-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
+![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.31-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
 
 ## Introduction
 
@@ -51,6 +51,7 @@ It's suggested that if you don't have an old Kubenretes version, you try the lat
 
 | Kubernetes | Docker image                                           |
 | ---------- | ------------------------------------------------------ |
+|  v1.31     | `docker pull ghcr.io/slok/kube-code-generator:v0.3.0`  |
 |  v1.30     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.28     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |

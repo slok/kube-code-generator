@@ -4,8 +4,8 @@ package v1
 
 import (
 	v1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
-	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
+	"k8s.io/client-go/listers"
 	"k8s.io/client-go/tools/cache"
 )
 
@@ -23,30 +23,10 @@ type HeroLister interface {
 
 // heroLister implements the HeroLister interface.
 type heroLister struct {
-	indexer cache.Indexer
+	listers.ResourceIndexer[*v1.Hero]
 }
 
 // NewHeroLister returns a new HeroLister.
 func NewHeroLister(indexer cache.Indexer) HeroLister {
-	return &heroLister{indexer: indexer}
-}
-
-// List lists all Heros in the indexer.
-func (s *heroLister) List(selector labels.Selector) (ret []*v1.Hero, err error) {
-	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1.Hero))
-	})
-	return ret, err
-}
-
-// Get retrieves the Hero from the index for a given name.
-func (s *heroLister) Get(name string) (*v1.Hero, error) {
-	obj, exists, err := s.indexer.GetByKey(name)
-	if err != nil {
-		return nil, err
-	}
-	if !exists {
-		return nil, errors.NewNotFound(v1.Resource("hero"), name)
-	}
-	return obj.(*v1.Hero), nil
+	return &heroLister{listers.New[*v1.Hero](indexer, v1.Resource("hero"))}
 }
