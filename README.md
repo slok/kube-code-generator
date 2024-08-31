@@ -31,7 +31,7 @@ The projects that are used under the hood are:
 
 ## How to use it
 
-The easiest way is to use the provided Docker image as it has all the required upstream dependencies.
+The easiest way is to use the prov[v0.3.0]: <https://github.com/slok/kube-code-generator/compare/v0.2.0...v0.3.0ided> Docker image as it has all the required upstream dependencies.
 
 Here is an example that mounts the current directory (a Go project) and generates the Go code and the CRDs by providing the APIs input directory and the generation output directories:
 
@@ -51,7 +51,7 @@ It's suggested that if you don't have an old Kubenretes version, you try the lat
 
 | Kubernetes | Docker image                                           |
 | ---------- | ------------------------------------------------------ |
-|  v1.31     | `docker pull ghcr.io/slok/kube-code-generator:v0.3.0`  |
+|  v1.31     | `docker pull ghcr.io/slok/kube-code-generator:v0.3.1`  |
 |  v1.30     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.28     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
