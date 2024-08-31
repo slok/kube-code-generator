@@ -15,8 +15,8 @@ COPY . .
 RUN ./scripts/build/bin/build-raw.sh
 
 FROM golang:1.22
-ARG CODEGEN_VERSION="1.30.0"
-ARG CONTROLLER_GEN_VERSION="0.15.0"
+ARG CODEGEN_VERSION="1.31.0"
+ARG CONTROLLER_GEN_VERSION="0.16.2"
 
 
 COPY --from=build-stage /src/bin/kube-code-generator /usr/local/bin/kube-code-generator
