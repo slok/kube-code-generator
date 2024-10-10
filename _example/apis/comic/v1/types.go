@@ -29,6 +29,8 @@ const (
 // +kubebuilder:printcolumn:name="KIND",type="string",JSONPath=".spec.kind"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:resource:singular=hero,path=heroes,shortName=he;sh,scope=Namespaced,categories=heroes;superheroes
+// +kubebuilder:selectablefield:JSONPath=`.spec.city`
+// +kubebuilder:selectablefield:JSONPath=`.spec.kind`
 type Hero struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
