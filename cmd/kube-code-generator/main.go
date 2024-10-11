@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
-	"log/slog"
 	"os"
 	"path/filepath"
 
@@ -79,7 +78,7 @@ func run(ctx context.Context, args []string, stdout, stderr io.Writer) error {
 
 func generateGoCode(ctx context.Context, cmdCfg CmdConfig, logger log.Logger, genOutPkg string) error {
 	if cmdCfg.GoCodeOutPath == "" {
-		slog.Info("Ignoring Go code generation")
+		logger.Infof("Ignoring Go code generation")
 		return nil
 	}
 
