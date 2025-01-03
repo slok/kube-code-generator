@@ -3,120 +3,30 @@
 package fake
 
 import (
-	"context"
-
 	v1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	labels "k8s.io/apimachinery/pkg/labels"
-	types "k8s.io/apimachinery/pkg/types"
-	watch "k8s.io/apimachinery/pkg/watch"
-	testing "k8s.io/client-go/testing"
+	comicv1 "github.com/slok/kube-code-generator/example/client/clientset/versioned/typed/comic/v1"
+	gentype "k8s.io/client-go/gentype"
 )
 
-// FakeHeros implements HeroInterface
-type FakeHeros struct {
+// fakeHeros implements HeroInterface
+type fakeHeros struct {
+	*gentype.FakeClientWithList[*v1.Hero, *v1.HeroList]
 	Fake *FakeComicV1
 }
 
-var herosResource = v1.SchemeGroupVersion.WithResource("heros")
-
-var herosKind = v1.SchemeGroupVersion.WithKind("Hero")
-
-// Get takes name of the hero, and returns the corresponding hero object, and an error if there is any.
-func (c *FakeHeros) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.Hero, err error) {
-	emptyResult := &v1.Hero{}
-	obj, err := c.Fake.
-		Invokes(testing.NewRootGetActionWithOptions(herosResource, name, options), emptyResult)
-	if obj == nil {
-		return emptyResult, err
+func newFakeHeros(fake *FakeComicV1) comicv1.HeroInterface {
+	return &fakeHeros{
+		gentype.NewFakeClientWithList[*v1.Hero, *v1.HeroList](
+			fake.Fake,
+			"",
+			v1.SchemeGroupVersion.WithResource("heros"),
+			v1.SchemeGroupVersion.WithKind("Hero"),
+			func() *v1.Hero { return &v1.Hero{} },
+			func() *v1.HeroList { return &v1.HeroList{} },
+			func(dst, src *v1.HeroList) { dst.ListMeta = src.ListMeta },
+			func(list *v1.HeroList) []*v1.Hero { return gentype.ToPointerSlice(list.Items) },
+			func(list *v1.HeroList, items []*v1.Hero) { list.Items = gentype.FromPointerSlice(items) },
+		),
+		fake,
 	}
-	return obj.(*v1.Hero), err
-}
-
-// List takes label and field selectors, and returns the list of Heros that match those selectors.
-func (c *FakeHeros) List(ctx context.Context, opts metav1.ListOptions) (result *v1.HeroList, err error) {
-	emptyResult := &v1.HeroList{}
-	obj, err := c.Fake.
-		Invokes(testing.NewRootListActionWithOptions(herosResource, herosKind, opts), emptyResult)
-	if obj == nil {
-		return emptyResult, err
-	}
-
-	label, _, _ := testing.ExtractFromListOptions(opts)
-	if label == nil {
-		label = labels.Everything()
-	}
-	list := &v1.HeroList{ListMeta: obj.(*v1.HeroList).ListMeta}
-	for _, item := range obj.(*v1.HeroList).Items {
-		if label.Matches(labels.Set(item.Labels)) {
-			list.Items = append(list.Items, item)
-		}
-	}
-	return list, err
-}
-
-// Watch returns a watch.Interface that watches the requested heros.
-func (c *FakeHeros) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
-	return c.Fake.
-		InvokesWatch(testing.NewRootWatchActionWithOptions(herosResource, opts))
-}
-
-// Create takes the representation of a hero and creates it.  Returns the server's representation of the hero, and an error, if there is any.
-func (c *FakeHeros) Create(ctx context.Context, hero *v1.Hero, opts metav1.CreateOptions) (result *v1.Hero, err error) {
-	emptyResult := &v1.Hero{}
-	obj, err := c.Fake.
-		Invokes(testing.NewRootCreateActionWithOptions(herosResource, hero, opts), emptyResult)
-	if obj == nil {
-		return emptyResult, err
-	}
-	return obj.(*v1.Hero), err
-}
-
-// Update takes the representation of a hero and updates it. Returns the server's representation of the hero, and an error, if there is any.
-func (c *FakeHeros) Update(ctx context.Context, hero *v1.Hero, opts metav1.UpdateOptions) (result *v1.Hero, err error) {
-	emptyResult := &v1.Hero{}
-	obj, err := c.Fake.
-		Invokes(testing.NewRootUpdateActionWithOptions(herosResource, hero, opts), emptyResult)
-	if obj == nil {
-		return emptyResult, err
-	}
-	return obj.(*v1.Hero), err
-}
-
-// UpdateStatus was generated because the type contains a Status member.
-// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeHeros) UpdateStatus(ctx context.Context, hero *v1.Hero, opts metav1.UpdateOptions) (result *v1.Hero, err error) {
-	emptyResult := &v1.Hero{}
-	obj, err := c.Fake.
-		Invokes(testing.NewRootUpdateSubresourceActionWithOptions(herosResource, "status", hero, opts), emptyResult)
-	if obj == nil {
-		return emptyResult, err
-	}
-	return obj.(*v1.Hero), err
-}
-
-// Delete takes name of the hero and deletes it. Returns an error if one occurs.
-func (c *FakeHeros) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
-	_, err := c.Fake.
-		Invokes(testing.NewRootDeleteActionWithOptions(herosResource, name, opts), &v1.Hero{})
-	return err
-}
-
-// DeleteCollection deletes a collection of objects.
-func (c *FakeHeros) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
-	action := testing.NewRootDeleteCollectionActionWithOptions(herosResource, opts, listOpts)
-
-	_, err := c.Fake.Invokes(action, &v1.HeroList{})
-	return err
-}
-
-// Patch applies the patch and returns the patched hero.
-func (c *FakeHeros) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.Hero, err error) {
-	emptyResult := &v1.Hero{}
-	obj, err := c.Fake.
-		Invokes(testing.NewRootPatchSubresourceActionWithOptions(herosResource, name, pt, data, opts, subresources...), emptyResult)
-	if obj == nil {
-		return emptyResult, err
-	}
-	return obj.(*v1.Hero), err
 }
