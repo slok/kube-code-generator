@@ -3,13 +3,13 @@
 package v1
 
 import (
-	"context"
+	context "context"
 	time "time"
 
-	comicv1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
+	apiscomicv1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
 	versioned "github.com/slok/kube-code-generator/example/client/clientset/versioned"
 	internalinterfaces "github.com/slok/kube-code-generator/example/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/slok/kube-code-generator/example/client/listers/comic/v1"
+	comicv1 "github.com/slok/kube-code-generator/example/client/listers/comic/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -20,7 +20,7 @@ import (
 // Heros.
 type HeroInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1.HeroLister
+	Lister() comicv1.HeroLister
 }
 
 type heroInformer struct {
@@ -54,7 +54,7 @@ func NewFilteredHeroInformer(client versioned.Interface, resyncPeriod time.Durat
 				return client.ComicV1().Heros().Watch(context.TODO(), options)
 			},
 		},
-		&comicv1.Hero{},
+		&apiscomicv1.Hero{},
 		resyncPeriod,
 		indexers,
 	)
@@ -65,9 +65,9 @@ func (f *heroInformer) defaultInformer(client versioned.Interface, resyncPeriod 
 }
 
 func (f *heroInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&comicv1.Hero{}, f.defaultInformer)
+	return f.factory.InformerFor(&apiscomicv1.Hero{}, f.defaultInformer)
 }
 
-func (f *heroInformer) Lister() v1.HeroLister {
-	return v1.NewHeroLister(f.Informer().GetIndexer())
+func (f *heroInformer) Lister() comicv1.HeroLister {
+	return comicv1.NewHeroLister(f.Informer().GetIndexer())
 }

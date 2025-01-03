@@ -3,8 +3,8 @@
 package versioned
 
 import (
-	"fmt"
-	"net/http"
+	fmt "fmt"
+	http "net/http"
 
 	comicv1 "github.com/slok/kube-code-generator/example/client/clientset/versioned/typed/comic/v1"
 	discovery "k8s.io/client-go/discovery"

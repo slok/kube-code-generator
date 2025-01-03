@@ -13,7 +13,7 @@ type FakeComicV1 struct {
 }
 
 func (c *FakeComicV1) Heros() v1.HeroInterface {
-	return &FakeHeros{c}
+	return newFakeHeros(c)
 }
 
 // RESTClient returns a RESTClient that is used to communicate

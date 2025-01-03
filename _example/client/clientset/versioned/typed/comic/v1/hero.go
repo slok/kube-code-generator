@@ -3,9 +3,9 @@
 package v1
 
 import (
-	"context"
+	context "context"
 
-	v1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
+	comicv1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
 	scheme "github.com/slok/kube-code-generator/example/client/clientset/versioned/scheme"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
@@ -21,33 +21,34 @@ type HerosGetter interface {
 
 // HeroInterface has methods to work with Hero resources.
 type HeroInterface interface {
-	Create(ctx context.Context, hero *v1.Hero, opts metav1.CreateOptions) (*v1.Hero, error)
-	Update(ctx context.Context, hero *v1.Hero, opts metav1.UpdateOptions) (*v1.Hero, error)
+	Create(ctx context.Context, hero *comicv1.Hero, opts metav1.CreateOptions) (*comicv1.Hero, error)
+	Update(ctx context.Context, hero *comicv1.Hero, opts metav1.UpdateOptions) (*comicv1.Hero, error)
 	// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-	UpdateStatus(ctx context.Context, hero *v1.Hero, opts metav1.UpdateOptions) (*v1.Hero, error)
+	UpdateStatus(ctx context.Context, hero *comicv1.Hero, opts metav1.UpdateOptions) (*comicv1.Hero, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
-	Get(ctx context.Context, name string, opts metav1.GetOptions) (*v1.Hero, error)
-	List(ctx context.Context, opts metav1.ListOptions) (*v1.HeroList, error)
+	Get(ctx context.Context, name string, opts metav1.GetOptions) (*comicv1.Hero, error)
+	List(ctx context.Context, opts metav1.ListOptions) (*comicv1.HeroList, error)
 	Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error)
-	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.Hero, err error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *comicv1.Hero, err error)
 	HeroExpansion
 }
 
 // heros implements HeroInterface
 type heros struct {
-	*gentype.ClientWithList[*v1.Hero, *v1.HeroList]
+	*gentype.ClientWithList[*comicv1.Hero, *comicv1.HeroList]
 }
 
 // newHeros returns a Heros
 func newHeros(c *ComicV1Client) *heros {
 	return &heros{
-		gentype.NewClientWithList[*v1.Hero, *v1.HeroList](
+		gentype.NewClientWithList[*comicv1.Hero, *comicv1.HeroList](
 			"heros",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",
-			func() *v1.Hero { return &v1.Hero{} },
-			func() *v1.HeroList { return &v1.HeroList{} }),
+			func() *comicv1.Hero { return &comicv1.Hero{} },
+			func() *comicv1.HeroList { return &comicv1.HeroList{} },
+		),
 	}
 }
