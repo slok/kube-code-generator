@@ -26,7 +26,10 @@ The projects that are used under the hood are:
 - Small API/configuration.
 - Safe standards
 - Ready to use Docker images.
-- Generates Go code like clients and informers (Used to implement operators, CLIs...).
+- Generates CR client Go code (User in controllers and operators).
+- Generates CR informers Go code (User in controllers and operators).
+- Generates CR listers Go code (User in controllers and operators).
+- Generates CR "apply configurations" Go code (User in controllers and operators).
 - Generates CRD manifests (Used for API registration on k8s clusters).
 
 ## How to use it
@@ -43,6 +46,12 @@ docker run -it --rm -v ${PWD}:/app ghcr.io/slok/kube-code-generator \
 ```
 
 However, the best way to know how to use it is with a full example, you have it in [_example](_example/) dir.
+
+### Optional features
+
+These are the list of features that can be enabled when generating Go code or CRDs:
+
+- `--apply-configurations`: Generates [apply configurations](https://pkg.go.dev/k8s.io/client-go/applyconfigurations) for CRs require for [server-side-apply](https://kubernetes.io/docs/reference/using-api/server-side-apply/).
 
 ## Kubernetes versions
 

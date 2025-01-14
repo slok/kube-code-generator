@@ -54,6 +54,11 @@ func (g *ClientGenerator) WithAPIsPath(path string) *ClientGenerator {
 	return g
 }
 
+func (g *ClientGenerator) WithApplyConfig() *ClientGenerator {
+	g.cmdArgs = append(g.cmdArgs, `--with-applyconfig`)
+	return g
+}
+
 func (g *ClientGenerator) Run(ctx context.Context) error {
 	kubeCodeGenSHPath := filepath.Join(g.codeGenPath, "kube_codegen.sh")
 	bashCmd := fmt.Sprintf("source %s ; kube::codegen::gen_client %s %s", kubeCodeGenSHPath, strings.Join(g.cmdArgs, " "), g.apisPath)

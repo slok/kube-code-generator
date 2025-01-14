@@ -6,6 +6,7 @@ import (
 	context "context"
 
 	comicv1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
+	applyconfigurationcomicv1 "github.com/slok/kube-code-generator/example/client/applyconfiguration/comic/v1"
 	scheme "github.com/slok/kube-code-generator/example/client/clientset/versioned/scheme"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
@@ -31,18 +32,21 @@ type HeroInterface interface {
 	List(ctx context.Context, opts metav1.ListOptions) (*comicv1.HeroList, error)
 	Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error)
 	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *comicv1.Hero, err error)
+	Apply(ctx context.Context, hero *applyconfigurationcomicv1.HeroApplyConfiguration, opts metav1.ApplyOptions) (result *comicv1.Hero, err error)
+	// Add a +genclient:noStatus comment above the type to avoid generating ApplyStatus().
+	ApplyStatus(ctx context.Context, hero *applyconfigurationcomicv1.HeroApplyConfiguration, opts metav1.ApplyOptions) (result *comicv1.Hero, err error)
 	HeroExpansion
 }
 
 // heros implements HeroInterface
 type heros struct {
-	*gentype.ClientWithList[*comicv1.Hero, *comicv1.HeroList]
+	*gentype.ClientWithListAndApply[*comicv1.Hero, *comicv1.HeroList, *applyconfigurationcomicv1.HeroApplyConfiguration]
 }
 
 // newHeros returns a Heros
 func newHeros(c *ComicV1Client) *heros {
 	return &heros{
-		gentype.NewClientWithList[*comicv1.Hero, *comicv1.HeroList](
+		gentype.NewClientWithListAndApply[*comicv1.Hero, *comicv1.HeroList, *applyconfigurationcomicv1.HeroApplyConfiguration](
 			"heros",
 			c.RESTClient(),
 			scheme.ParameterCodec,

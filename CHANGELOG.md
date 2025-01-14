@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Support `Apply configurations` clients and types generation using `--apply-configurations` flag.
+
 ## [v0.4.0] - 2025-01-03
 
 ### Changed

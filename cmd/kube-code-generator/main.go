@@ -104,12 +104,18 @@ func generateGoCode(ctx context.Context, cmdCfg CmdConfig, logger log.Logger, ge
 	}
 
 	logger.Infof("Generating Go code...")
-	err = generate.NewClientGenerator(logger, cmdCfg.CodeGenPath, generate.StdBashExecutor).
+	gen := generate.NewClientGenerator(logger, cmdCfg.CodeGenPath, generate.StdBashExecutor).
 		WithWatch().
 		WithBoilerplate(boilerplatePath).
 		WithOutputPkg(genOutPkg).
 		WithOutputDir(cmdCfg.GoCodeOutPath).
-		WithAPIsPath(cmdCfg.APIsPath).Run(ctx)
+		WithAPIsPath(cmdCfg.APIsPath)
+
+	if cmdCfg.EnableApplyConfigs {
+		gen = gen.WithApplyConfig()
+	}
+
+	err = gen.Run(ctx)
 	if err != nil {
 		return fmt.Errorf("could not generate Go clients code: %w", err)
 	}

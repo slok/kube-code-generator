@@ -1,4 +1,4 @@
-IMAGE := ghcr.io/slok/kube-code-generator:v0.3.2-2-g40faacd-amd64
+IMAGE := ghcr.io/slok/kube-code-generator:v0.4.0-amd64
 
 DIRECTORY := $(PWD)
 DEPS_CMD := go mod tidy
@@ -10,7 +10,8 @@ generate:
 	@docker run -it --rm -v $(DIRECTORY):/app $(IMAGE) \
 	--apis-in ./apis \
 	--go-gen-out ./client \
-	--crd-gen-out ./manifests
+	--crd-gen-out ./manifests \
+	--apply-configurations
 
 .PHONY: deps
 deps:

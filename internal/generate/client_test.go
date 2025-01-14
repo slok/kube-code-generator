@@ -27,10 +27,11 @@ func TestClientGenerator(t *testing.T) {
 					WithBoilerplate("./boilerplate.txt").
 					WithOutputDir("./out").
 					WithOutputPkg("my-pkg").
+					WithApplyConfig().
 					WithWatch().
 					Run(context.TODO())
 			},
-			expCmd: `source kube_codegen.sh ; kube::codegen::gen_client --boilerplate ./boilerplate.txt --output-dir ./out --output-pkg my-pkg --with-watch ./apis`,
+			expCmd: `source kube_codegen.sh ; kube::codegen::gen_client --boilerplate ./boilerplate.txt --output-dir ./out --output-pkg my-pkg --with-applyconfig --with-watch ./apis`,
 		},
 	}
 

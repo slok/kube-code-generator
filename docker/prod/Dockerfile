@@ -1,7 +1,7 @@
 # Set also `ARCH` ARG here so we can use it on all the `FROM`s. 
 ARG ARCH
 
-FROM golang:1.23 as build-stage
+FROM golang:1.23 AS build-stage
 
 # Required by the built script for setting verion and cross-compiling.
 ARG VERSION
