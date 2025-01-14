@@ -26,10 +26,10 @@ The projects that are used under the hood are:
 - Small API/configuration.
 - Safe standards
 - Ready to use Docker images.
-- Generates CR client Go code (User in controllers and operators).
-- Generates CR informers Go code (User in controllers and operators).
-- Generates CR listers Go code (User in controllers and operators).
-- Generates CR "apply configurations" Go code (User in controllers and operators).
+- Generates CR client Go code (Used in controllers and operators).
+- Generates CR informers Go code (Used in controllers and operators).
+- Generates CR listers Go code (Used in controllers and operators).
+- Generates CR ["apply configurations"](https://pkg.go.dev/k8s.io/client-go/applyconfigurations) Go code (Used in controllers and operators).
 - Generates CRD manifests (Used for API registration on k8s clusters).
 
 ## How to use it
