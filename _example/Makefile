@@ -1,4 +1,4 @@
-IMAGE := ghcr.io/slok/kube-code-generator:v0.4.0-amd64
+IMAGE := ghcr.io/slok/kube-code-generator:v0.5.0-amd64
 
 DIRECTORY := $(PWD)
 DEPS_CMD := go mod tidy

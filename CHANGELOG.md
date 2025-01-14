@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [v0.5.0] - 2025-01-14
+
 ### Added
 
 - Support `Apply configurations` clients and types generation using `--apply-configurations` flag.
@@ -57,7 +59,8 @@
 - Docker image uses `kubernetes/code-generator` v1.30.0-beta.0.
 - Docker image uses `kubernetes-sigs/controller-tools` v0.14.0.
 
-[unreleased]: https://github.com/slok/kube-code-generator/compare/v0.4.0...HEAD
+[unreleased]: https://github.com/slok/kube-code-generator/compare/v0.5.0...HEAD
+[v0.5.0]: https://github.com/slok/kube-code-generator/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/slok/kube-code-generator/compare/v0.3.2...v0.4.0
 [v0.3.2]: https://github.com/slok/kube-code-generator/compare/v0.3.1...v0.3.2
 [v0.3.1]: https://github.com/slok/kube-code-generator/compare/v0.3.0...v0.3.1
