@@ -4,19 +4,20 @@ package fake
 
 import (
 	v1 "github.com/slok/kube-code-generator/example/apis/comic/v1"
-	comicv1 "github.com/slok/kube-code-generator/example/client/clientset/versioned/typed/comic/v1"
+	comicv1 "github.com/slok/kube-code-generator/example/client/applyconfiguration/comic/v1"
+	typedcomicv1 "github.com/slok/kube-code-generator/example/client/clientset/versioned/typed/comic/v1"
 	gentype "k8s.io/client-go/gentype"
 )
 
 // fakeHeros implements HeroInterface
 type fakeHeros struct {
-	*gentype.FakeClientWithList[*v1.Hero, *v1.HeroList]
+	*gentype.FakeClientWithListAndApply[*v1.Hero, *v1.HeroList, *comicv1.HeroApplyConfiguration]
 	Fake *FakeComicV1
 }
 
-func newFakeHeros(fake *FakeComicV1) comicv1.HeroInterface {
+func newFakeHeros(fake *FakeComicV1) typedcomicv1.HeroInterface {
 	return &fakeHeros{
-		gentype.NewFakeClientWithList[*v1.Hero, *v1.HeroList](
+		gentype.NewFakeClientWithListAndApply[*v1.Hero, *v1.HeroList, *comicv1.HeroApplyConfiguration](
 			fake.Fake,
 			"",
 			v1.SchemeGroupVersion.WithResource("heros"),
