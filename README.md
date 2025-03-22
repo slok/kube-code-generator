@@ -55,8 +55,13 @@ These are the list of features that can be enabled when generating Go code or CR
 
 ## Kubernetes versions
 
-It's suggested that if you don't have an old Kubenretes version, you try the latest kube-code-generator
-(`latest`), however the ones described on the table here are known to work correctly on the specific version.
+It's suggested that if you kind-of up to date Kubernetes version, you try the latest kube-code-generator:
+
+```bash
+docker pull ghcr.io/slok/kube-code-generator:latest
+```
+
+However the ones described on the table here are known to work correctly on the specific version.
 
 | Kubernetes | Docker image                                           |
 | ---------- | ------------------------------------------------------ |
