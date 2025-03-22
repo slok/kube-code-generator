@@ -1,7 +1,7 @@
 # Set also `ARCH` ARG here so we can use it on all the `FROM`s. 
 ARG ARCH
 
-FROM golang:1.23 AS build-stage
+FROM golang:1.24 AS build-stage
 
 # Required by the built script for setting verion and cross-compiling.
 ARG VERSION
@@ -14,9 +14,9 @@ WORKDIR /src
 COPY . .
 RUN ./scripts/build/bin/build-raw.sh
 
-FROM golang:1.23
-ARG CODEGEN_VERSION="1.32.0"
-ARG CONTROLLER_GEN_VERSION="0.17.0"
+FROM golang:1.24
+ARG CODEGEN_VERSION="1.32.3"
+ARG CONTROLLER_GEN_VERSION="0.17.2"
 
 
 COPY --from=build-stage /src/bin/kube-code-generator /usr/local/bin/kube-code-generator
@@ -26,7 +26,7 @@ RUN apt-get update && \
     git 
 
 # Code generator stuff
-RUN wget http://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGEN_VERSION}.tar.gz && \
+RUN wget https://github.com/kubernetes/code-generator/archive/kubernetes-${CODEGEN_VERSION}.tar.gz && \
     mkdir -p /tmp/k8s-code-generator/ && \
     tar zxvf kubernetes-${CODEGEN_VERSION}.tar.gz --strip 1 -C /tmp/k8s-code-generator/ && \
     cd /tmp/k8s-code-generator/ && go mod tidy && cd - && \
