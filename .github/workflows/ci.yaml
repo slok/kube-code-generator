@@ -6,7 +6,7 @@ jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
-    container: golangci/golangci-lint:v1.63.3-alpine
+    container: golangci/golangci-lint:v1.64.8-alpine
     steps:
       - uses: actions/checkout@v4
       - run: |
