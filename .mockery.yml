@@ -1,0 +1,8 @@
+dir: '{{.InterfaceDir}}/{{.SrcPackageName}}mock'
+filename: mocks.go
+force-file-write: true
+structname: '{{.InterfaceName}}'
+pkgname: '{{.SrcPackageName}}mock'
+template: testify
+packages:
+  github.com/slok/kube-code-generator/internal/generate: {interfaces: {BashExecutor}}

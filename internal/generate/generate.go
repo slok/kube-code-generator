@@ -10,8 +10,6 @@ type BashExecutor interface {
 	BashExec(ctx context.Context, bashCmd string) (string, error)
 }
 
-//go:generate mockery --case underscore --output generatemock --outpkg generatemock --name BashExecutor
-
 // StdBashExecutor is an standard bash executor.
 var StdBashExecutor = stdBashExecutor(false)
 
