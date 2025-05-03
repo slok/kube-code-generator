@@ -1,6 +1,6 @@
 # Kube code generator
 
-![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.32-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
+![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.33-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
 
 ## Introduction
 
@@ -65,15 +65,10 @@ However the ones described on the table here are known to work correctly on the 
 
 | Kubernetes | Docker image                                           |
 | ---------- | ------------------------------------------------------ |
+|  v1.33     | `docker pull ghcr.io/slok/kube-code-generator:v0.7.0`  |
 |  v1.32     | `docker pull ghcr.io/slok/kube-code-generator:v0.6.0`  |
 |  v1.31     | `docker pull ghcr.io/slok/kube-code-generator:v0.3.2`  |
 |  v1.30     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.29     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.28     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
 |  v1.27     | `docker pull ghcr.io/slok/kube-code-generator:v0.2.0`  |
-
-### Versions <v1.27
-
-With the release of Kubernetes v1.30, this app was rewritten from bash hacky scripts into a proper Go application, that is easier, more extendable and safer to use.
-
-In case you tested this new refactor and isn't working for you, Inwould suggest to try the previous versions, check the previous [Readme](https://github.com/slok/kube-code-generator/tree/v1.27.0).
