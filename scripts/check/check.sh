@@ -3,4 +3,4 @@
 set -o errexit
 set -o nounset
 
-golangci-lint run
+GOFLAGS="-buildvcs=false" golangci-lint run

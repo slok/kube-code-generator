@@ -83,7 +83,7 @@ func generateGoCode(ctx context.Context, cmdCfg CmdConfig, logger log.Logger, ge
 	}
 
 	if filepath.IsAbs(cmdCfg.GoCodeOutPath) {
-		return fmt.Errorf("Go generated code path should be relative")
+		return fmt.Errorf("go generated code path should be relative")
 	}
 
 	err := os.MkdirAll(cmdCfg.GoCodeOutPath, os.ModePerm)
