@@ -1,7 +1,7 @@
 # Set also `ARCH` ARG here so we can use it on all the `FROM`s. 
 ARG ARCH
 
-FROM golang:1.24 AS build-stage
+FROM golang:1.25 AS build-stage
 
 # Required by the built script for setting verion and cross-compiling.
 ARG VERSION
@@ -14,9 +14,9 @@ WORKDIR /src
 COPY . .
 RUN ./scripts/build/bin/build-raw.sh
 
-FROM golang:1.24
-ARG CODEGEN_VERSION="1.33.0"
-ARG CONTROLLER_GEN_VERSION="0.17.3"
+FROM golang:1.25
+ARG CODEGEN_VERSION="1.34.0"
+ARG CONTROLLER_GEN_VERSION="0.19.0"
 
 
 COPY --from=build-stage /src/bin/kube-code-generator /usr/local/bin/kube-code-generator
