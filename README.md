@@ -1,6 +1,6 @@
 # Kube code generator
 
-![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.33-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
+![Kubernetes release](https://img.shields.io/badge/Kubernetes-v1.34-green?logo=Kubernetes&style=flat&color=326CE5&logoColor=white)
 
 ## Introduction
 
@@ -65,6 +65,7 @@ However the ones described on the table here are known to work correctly on the 
 
 | Kubernetes | Docker image                                           |
 | ---------- | ------------------------------------------------------ |
+|  v1.34     | `docker pull ghcr.io/slok/kube-code-generator:v0.8.0`  |
 |  v1.33     | `docker pull ghcr.io/slok/kube-code-generator:v0.7.0`  |
 |  v1.32     | `docker pull ghcr.io/slok/kube-code-generator:v0.6.0`  |
 |  v1.31     | `docker pull ghcr.io/slok/kube-code-generator:v0.3.2`  |
