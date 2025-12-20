@@ -2,12 +2,11 @@
 
 ## [Unreleased]
 
-## [v0.8.0] - 2025-12-20
+## [v0.9.0] - 2025-12-20
 
 ### Changed
 
 - Docker image uses `kubernetes/code-generator` v1.35.0.
-
 
 ## [v0.8.0] - 2025-09-06
 
@@ -84,7 +83,8 @@
 - Docker image uses `kubernetes/code-generator` v1.30.0-beta.0.
 - Docker image uses `kubernetes-sigs/controller-tools` v0.14.0.
 
-[unreleased]: https://github.com/slok/kube-code-generator/compare/v0.8.0...HEAD
+[unreleased]: https://github.com/slok/kube-code-generator/compare/v0.9.0...HEAD
+[v0.9.0]: https://github.com/slok/kube-code-generator/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/slok/kube-code-generator/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/slok/kube-code-generator/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/slok/kube-code-generator/compare/v0.5.0...v0.6.0
