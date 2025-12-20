@@ -9,6 +9,8 @@ import (
 
 // HeroSpecApplyConfiguration represents a declarative configuration of the HeroSpec type for use
 // with apply.
+//
+// HeroSpec is the spec of a Hero.
 type HeroSpecApplyConfiguration struct {
 	Name        *string           `json:"name,omitempty"`
 	City        *string           `json:"city,omitempty"`
