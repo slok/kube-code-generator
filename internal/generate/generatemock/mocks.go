@@ -69,15 +69,26 @@ type BashExecutor_BashExec_Call struct {
 }
 
 // BashExec is a helper method to define mock.On call
-//   - ctx
-//   - bashCmd
+//   - ctx context.Context
+//   - bashCmd string
 func (_e *BashExecutor_Expecter) BashExec(ctx interface{}, bashCmd interface{}) *BashExecutor_BashExec_Call {
 	return &BashExecutor_BashExec_Call{Call: _e.mock.On("BashExec", ctx, bashCmd)}
 }
 
 func (_c *BashExecutor_BashExec_Call) Run(run func(ctx context.Context, bashCmd string)) *BashExecutor_BashExec_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		run(
+			arg0,
+			arg1,
+		)
 	})
 	return _c
 }

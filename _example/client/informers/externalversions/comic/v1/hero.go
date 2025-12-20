@@ -40,7 +40,7 @@ func NewHeroInformer(client versioned.Interface, resyncPeriod time.Duration, ind
 // one. This reduces memory footprint and number of connections to the server.
 func NewFilteredHeroInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
-		&cache.ListWatch{
+		cache.ToListWatcherWithWatchListSemantics(&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
@@ -65,7 +65,7 @@ func NewFilteredHeroInformer(client versioned.Interface, resyncPeriod time.Durat
 				}
 				return client.ComicV1().Heros().Watch(ctx, options)
 			},
-		},
+		}, client),
 		&apiscomicv1.Hero{},
 		resyncPeriod,
 		indexers,

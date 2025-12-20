@@ -10,6 +10,8 @@ import (
 
 // HeroApplyConfiguration represents a declarative configuration of the Hero type for use
 // with apply.
+//
+// Hero represents a comic hero.
 type HeroApplyConfiguration struct {
 	metav1.TypeMetaApplyConfiguration    `json:",inline"`
 	*metav1.ObjectMetaApplyConfiguration `json:"metadata,omitempty"`
@@ -26,6 +28,7 @@ func Hero(name string) *HeroApplyConfiguration {
 	b.WithAPIVersion("comic.kube-code-generator.slok.dev/v1")
 	return b
 }
+
 func (b HeroApplyConfiguration) IsApplyConfiguration() {}
 
 // WithKind sets the Kind field in the declarative configuration to the given value
