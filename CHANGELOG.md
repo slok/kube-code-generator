@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [v0.10.0] - 2026-06-21
+
+### Changed
+
+- Docker image uses `kubernetes/code-generator` v1.36.2.
+- Docker image uses `kubernetes-sigs/controller-tools` v0.21.0.
+- Use Go 1.26.
+- Use golangci-lint v2.12.2.
+- Use mockery v3.7.1.
+
 ## [v0.9.0] - 2025-12-20
 
 ### Changed
@@ -83,7 +93,8 @@
 - Docker image uses `kubernetes/code-generator` v1.30.0-beta.0.
 - Docker image uses `kubernetes-sigs/controller-tools` v0.14.0.
 
-[unreleased]: https://github.com/slok/kube-code-generator/compare/v0.9.0...HEAD
+[unreleased]: https://github.com/slok/kube-code-generator/compare/v0.10.0...HEAD
+[v0.10.0]: https://github.com/slok/kube-code-generator/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://github.com/slok/kube-code-generator/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/slok/kube-code-generator/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/slok/kube-code-generator/compare/v0.6.0...v0.7.0
